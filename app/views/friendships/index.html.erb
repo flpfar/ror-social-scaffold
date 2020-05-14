@@ -1,0 +1,18 @@
+<h1> Friends </h1>
+<% if @active_friends.empty? %>
+  <span> No friends added </span>
+<% else %>
+  <% @active_friends.each do |friend| %>
+    <span><%= link_to friend.name, user_path(friend), class: 'profile-link' %></span>
+  <% end %>
+<% end %>
+
+
+<h2> Pending invitations </h2>
+<% if @pending_friends.empty? %>
+  <span> No pending invitations </span>
+<% else %>
+  <% @pending_friends.each do |pending| %>
+    <span><%= link_to pending.name, user_path(pending), class: 'profile-link' %></span>
+  <% end %>
+<% end %>

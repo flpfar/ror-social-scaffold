@@ -1,4 +1,9 @@
 class FriendshipsController < ApplicationController
+  def index
+    @active_friends = current_user.active_friends
+    @pending_friends = current_user.pending_friends
+  end
+
   def new; end
 
   def create

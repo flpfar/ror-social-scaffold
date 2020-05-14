@@ -13,16 +13,25 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :friends, through: :friendships, foreign_key: 'friend_id'
 
-  def is_friend_of?(id)
+  def friend_of?(id)
     friends = friendships.where(friend_id: id)
     if friends.any?
-      return true if friends.first[:accepted] 
-    end    
+      return true if friends.first[:accepted]
+    end
     false
   end
 
-  def is_invitation_sent?(id)
+  def invitation_sent?(id)
     return true if friendships.where(friend_id: id).any?
+
     false
-  end  
+  end
+
+  def active_friends
+    friends.where(friendships: { accepted: true })
+  end
+
+  def pending_friends
+    friends.where(friendships: { accepted: false })
+  end
 end
