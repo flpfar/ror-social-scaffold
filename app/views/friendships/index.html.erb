@@ -7,12 +7,22 @@
   <% end %>
 <% end %>
 
-
-<h2> Pending invitations </h2>
+<br />
+<h2> Pending invitations sent </h2>
 <% if @pending_friends.empty? %>
   <span> No pending invitations </span>
 <% else %>
   <% @pending_friends.each do |pending| %>
     <span><%= link_to pending.name, user_path(pending), class: 'profile-link' %></span>
+  <% end %>
+<% end %>
+
+<br />
+<h2> Pending friendship requests </h2>
+<% if @friendship_requests.empty? %>
+  <span> No friendship requests </span>
+<% else %>
+  <% @friendship_requests.each do |request| %>
+    <span><%= link_to request.name, user_path(request), class: 'profile-link' %></span>
   <% end %>
 <% end %>
