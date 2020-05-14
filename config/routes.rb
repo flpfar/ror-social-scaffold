@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   get '/friendships/:id', to: 'friendships#create', as: 'new_friendship'
+  put '/friendships/:id', to: 'friendships#update', as: 'friendship'
   resources :friendships, only: [:index]
 
   resources :users, only: %i[index show]

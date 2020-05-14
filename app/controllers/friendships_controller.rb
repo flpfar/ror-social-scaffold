@@ -1,4 +1,6 @@
 class FriendshipsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @active_friends = current_user.active_friends
     @pending_friends = current_user.pending_friends
@@ -19,5 +21,16 @@ class FriendshipsController < ApplicationController
     end
 
     redirect_to users_path
+  end
+
+  def update
+    requested_user_id = params[:id]
+    friendship = Friendship.where(user_id: requested_user_id, friend_id: current_user.id)[0]
+    if friendship.update(accepted: true)
+      flash[:notice] = 'Friendship accepted!'
+    else
+      flash[:alert] = 'It was not possible to accept this friendship. Try again later.'
+    end
+    redirect_to friendships_path
   end
 end

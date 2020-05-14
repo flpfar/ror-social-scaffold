@@ -22,7 +22,8 @@
 <% if @friendship_requests.empty? %>
   <span> No friendship requests </span>
 <% else %>
-  <% @friendship_requests.each do |request| %>
-    <span><%= link_to request.name, user_path(request), class: 'profile-link' %></span>
+  <% @friendship_requests.each do |requesting_user| %>
+    <span><%= link_to requesting_user.name, user_path(requesting_user), class: 'profile-link' %></span>
+    <%= link_to "Accept friendship request", friendship_path(requesting_user.id), method: :put %>
   <% end %>
 <% end %>
