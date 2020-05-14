@@ -33,4 +33,16 @@ class FriendshipsController < ApplicationController
     end
     redirect_to friendships_path
   end
+
+  def destroy
+    friend_id_to_delete = params[:id]
+    friendship = Friendship.where(user_id: current_user.id, friend_id: friend_id_to_delete)[0]
+    if friendship
+      friendship.destroy
+      flash[:notice] = 'Friendship removed'
+    else
+      flash[:alert] = 'It was not possible to remove this friendship. Try again later.'
+    end
+    redirect_to users_path
+  end
 end

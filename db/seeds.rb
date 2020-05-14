@@ -20,7 +20,7 @@ User.create(
 
 30.times do |i|
   User.create(
-    name: "#{i} Faker::Name.name",
+    name: "#{i} #{Faker::Name.name}",
     email: "#{i}m@mail.com",
     password: '123123'
   )

@@ -3,7 +3,7 @@
   <span> No friends added </span>
 <% else %>
   <% @active_friends.each do |friend| %>
-    <span><%= link_to friend.name, user_path(friend), class: 'profile-link' %></span>
+    <span><%= link_to friend.name, user_path(friend) %></span>
   <% end %>
 <% end %>
 
@@ -13,7 +13,7 @@
   <span> No pending invitations </span>
 <% else %>
   <% @pending_friends.each do |pending| %>
-    <span><%= link_to pending.name, user_path(pending), class: 'profile-link' %></span>
+    <span><%= link_to pending.name, user_path(pending) %></span>
   <% end %>
 <% end %>
 
@@ -23,7 +23,9 @@
   <span> No friendship requests </span>
 <% else %>
   <% @friendship_requests.each do |requesting_user| %>
-    <span><%= link_to requesting_user.name, user_path(requesting_user), class: 'profile-link' %></span>
-    <%= link_to "Accept friendship request", friendship_path(requesting_user.id), method: :put %>
+    <span>
+    <%= link_to requesting_user.name, user_path(requesting_user) %>
+    <%= link_to "(Accept friendship request)", friendship_path(requesting_user.id), method: :put %>
+    </span>
   <% end %>
 <% end %>
