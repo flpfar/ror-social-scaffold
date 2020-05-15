@@ -16,7 +16,6 @@ RSpec.describe 'User', type: :feature do
       fill_in 'user_email', with: 'sergiomauz@mail.com'
       fill_in 'user_password', with: '123456'
       find("input[type='submit']").click
-      
     end
 
     context 'when you are in -all users- page' do
@@ -32,15 +31,15 @@ RSpec.describe 'User', type: :feature do
       it 'removes a friend' do
         find('li', text: 'Selena').click_link('Remove friend')
         expect(page).to have_content('Friendship removed')
-      end       
-    end  
-    
+      end
+    end
+
     context 'when you are in -friends- page' do
       it 'accepts a friendship invitation' do
         visit friendships_path
         click_link('(Accept friendship request)')
         expect(page).to have_content('Friendship accepted!')
-      end      
+      end
     end
   end
 
