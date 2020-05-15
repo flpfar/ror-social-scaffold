@@ -30,6 +30,12 @@ class User < ApplicationRecord
     false
   end
 
+  def invitation_received?(id)
+    return true if inverse_friendships.where(user_id: id).any?
+
+    false
+  end  
+
   def active_friends
     friends.where(friendships: { accepted: true })
   end
