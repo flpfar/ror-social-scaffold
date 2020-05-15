@@ -10,9 +10,9 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  has_many :friendships  
+  has_many :friendships
   has_many :friends, through: :friendships, foreign_key: 'friend_id'
-  
+
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :inverse_friends, through: :inverse_friendships, source: :user, foreign_key: 'user_id'
 
@@ -26,6 +26,7 @@ class User < ApplicationRecord
 
   def invitation_sent?(id)
     return true if friendships.where(friend_id: id).any?
+
     false
   end
 
@@ -38,6 +39,6 @@ class User < ApplicationRecord
   end
 
   def friendship_requests
-    inverse_friends.where(friendships: { accepted: false})
+    inverse_friends.where(friendships: { accepted: false })
   end
 end
