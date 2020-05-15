@@ -10,7 +10,7 @@
           |
           <% if current_user.friend_of?(user.id) %>        
             <span class="profile-link">
-              <%= link_to 'Remove friend', friendship_path(user.id), method: :delete, data: {confirm: 'Are you sure you want to remove this friendship?'}, class: 'profile-link' %>
+              <%= link_to 'Remove friend', friendship_path(user.id), method: :delete, class: 'profile-link' %>
             </span>            
           <% elsif current_user.invitation_sent?(user.id) %> 
             <span>Invitation pending...</span>
