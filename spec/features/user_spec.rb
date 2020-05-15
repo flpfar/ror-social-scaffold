@@ -13,6 +13,7 @@ RSpec.describe 'User', type: :feature do
     User.find(5).friendships.create(friend_id: 1, accepted: false)
   end
 
+  # rubocop:disable Metrics/BlockLength
   context 'when logged in as Sergio' do
     before(:each) do
       visit new_user_session_path
@@ -60,6 +61,7 @@ RSpec.describe 'User', type: :feature do
       end
     end
   end
+  # rubocop:enable Metrics/BlockLength
 
   it 'is not a valid sign up if the email exists in the database' do
     visit new_user_registration_path

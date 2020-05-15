@@ -34,7 +34,7 @@ class User < ApplicationRecord
     return true if inverse_friendships.where(user_id: id).any?
 
     false
-  end  
+  end
 
   def active_friends
     friends.where(friendships: { accepted: true })

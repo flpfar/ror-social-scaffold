@@ -10,10 +10,10 @@ class FriendshipsController < ApplicationController
   def new; end
 
   def create
-    user = User.find(current_user.id)    
+    user = User.find(current_user.id)
     friendship = user.friendships.new(user_id: current_user.id, friend_id: params[:id], accepted: false)
 
-    if !user.inverse_friendships.where(user_id: params[:id]).any? && friendship.save
+    if user.inverse_friendships.where(user_id: params[:id]).none? && friendship.save
       flash[:notice] = 'Invitation sent'
     else
       flash[:alert] = 'Invitation failed'
@@ -25,8 +25,8 @@ class FriendshipsController < ApplicationController
   def update
     requested_user_id = params[:id]
     friendship1 = Friendship.where(user_id: requested_user_id, friend_id: current_user.id)[0]
-    friendship1.update(accepted: true)  
-    friendship2 = Friendship.create(user_id: current_user.id, friend_id: requested_user_id, accepted: true)   
+    friendship1.update(accepted: true)
+    friendship2 = Friendship.create(user_id: current_user.id, friend_id: requested_user_id, accepted: true)
 
     if friendship1 && friendship2
       flash[:notice] = 'Friendship accepted!'
