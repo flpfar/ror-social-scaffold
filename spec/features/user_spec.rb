@@ -6,8 +6,11 @@ RSpec.describe 'User', type: :feature do
     User.create(name: 'Felipe Rosa', email: 'felipe@mail.com', password: '123456')
     User.create(name: 'Selena Perez', email: 'selena@mail.com', password: '123456')
     User.create(name: 'Elvis Presley', email: 'elvis@mail.com', password: '123456')
-    User.first.friendships.create(friend_id: 3, accepted: true)
-    User.last.friendships.create(friend_id: 1, accepted: false)
+    User.create(name: 'Heitor Nunes', email: 'heitor@mail.com', password: '123456')
+    User.find(1).friendships.create(friend_id: 3, accepted: true)
+    User.find(3).friendships.create(friend_id: 1, accepted: true)
+    User.find(4).friendships.create(friend_id: 1, accepted: false)
+    User.find(5).friendships.create(friend_id: 1, accepted: false)
   end
 
   context 'when logged in as Sergio' do
@@ -32,12 +35,27 @@ RSpec.describe 'User', type: :feature do
         find('li', text: 'Selena').click_link('Remove friend')
         expect(page).to have_content('Friendship removed')
       end
+
+      context 'when accepts a friendship request' do
+        before(:each) { find('li', text: 'Heitor Nunes').click_link('(Accept friendship request)') }
+        it 'gets a message "Friendship accepted!"' do
+          expect(page).to have_content('Friendship accepted!')
+        end
+
+        it 'creates Heitor Nunes as a new entry in Sergio Zambrano friendships' do
+          expect(User.find(1).friends.where(name: 'Heitor Nunes')[0]).to be_truthy
+        end
+
+        it 'creates Sergio Zambrano as a new entry in Heitor Nunes friendships' do
+          expect(User.find(5).friends.where(name: 'Sergio Zambrano')[0]).to be_truthy
+        end
+      end
     end
 
     context 'when you are in -friends- page' do
       it 'accepts a friendship invitation' do
         visit friendships_path
-        click_link('(Accept friendship request)')
+        find('a', text: 'Elvis').find('+a').click
         expect(page).to have_content('Friendship accepted!')
       end
     end
