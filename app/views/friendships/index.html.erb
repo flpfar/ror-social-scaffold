@@ -24,8 +24,9 @@
 <% else %>
   <% @friendship_requests.each do |requesting_user| %>
     <span>
-    <%= link_to requesting_user.name, user_path(requesting_user) %>
-    <%= link_to "(Accept friendship request)", friendship_path(requesting_user.id), method: :put %>
+    <%= link_to requesting_user.name, user_path(requesting_user) %> |  
+    <%= link_to "(Accept)", friendship_path(requesting_user.id), method: :put %> 
+    <%= link_to "(Reject)", friendship_reject_path(requesting_user.id), method: :delete %>
     </span>
   <% end %>
 <% end %>

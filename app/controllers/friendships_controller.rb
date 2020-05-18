@@ -45,4 +45,16 @@ class FriendshipsController < ApplicationController
     end
     redirect_to users_path
   end
+
+  def reject
+    friend_id_to_delete = params[:id]
+    friendship = Friendship.where(user_id: friend_id_to_delete, friend_id: current_user.id)[0]
+    if friendship
+      friendship.destroy
+      flash[:notice] = 'Friendship request rejected'
+    else
+      flash[:alert] = 'It was not possible to reject this friendship request. Try again later.'
+    end
+    redirect_to users_path
+  end  
 end
