@@ -1,75 +1,51 @@
-# Scaffold for social media app with Ruby on Rails
+# Stay In Touch
+ > This project implements a simple version of a social network, built to practice Ruby on Rails.
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+![screenshot](https://user-images.githubusercontent.com/15898299/82358690-40ab1f00-99dd-11ea-8c3e-58ea829a1217.png)
 
 ## Built With
 
-- Ruby v2.7.0
-- Ruby on Rails v5.2.4
+- Ruby on Rails
+- Rspec and Capybara for testing
+- Postgres as database
+- Devise for user authentication
+- Rubocop as linter
 
 ## Live Demo
 
-TBA
+[Stay in Touch](https://still-crag-75924.herokuapp.com/) - Social Media
 
+## How to Install
 
-## Getting Started
+- Install Ruby in your system. To install Ruby, you can read the [Documentation](https://www.ruby-lang.org/en/documentation/installation/).
+- Install Rails. You can read this [page](https://www.theodinproject.com/courses/ruby-on-rails/lessons/your-first-rails-application-ruby-on-rails).
 
-To get a local copy up and running follow these simple example steps.
+- Clone it using **git clone** command.
+- Run in your terminal **bundle install**.
+- Run in your terminal **rails db:migrate**.
+- Run in your terminal **rails server**.
 
-### Prerequisites
+## Automated Test
 
-Ruby: 2.6.3
-Rails: 5.2.3
-Postgres: >=9.5
-
-### Setup
-
-Instal gems with:
-
-```
-bundle install
-```
-
-Setup database with:
-
-```
-   rails db:create
-   rails db:migrate
-```
-
-
-
-### Usage
-
-Start server with:
-
-```
-    rails server
-```
-
-Open `http://localhost:3000/` in your browser.
-
-### Run tests
-
-```
-    rpsec --format documentation
-```
-
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
-### Deployment
-
-TBA
+- This project uses RSpec and Capybara for unit and integration testing. In order to run the tests, in terminal, type: ```rspec```
 
 ## Authors
 
-TBA
+👤 **Sergio Zambrano**
+
+- Github: [@sergiomauz](https://github.com/sergiomauz)
+- Twitter: [@sergiomauz](https://twitter.com/sergiomauz)
+- Linkedin: [Sergio Zambrano](https://www.linkedin.com/in/sergiomauz/)
+
+👤 **Felipe Rosa**
+
+- Github: [@flpfar](https://github.com/flpfar)
+- Twitter: [@flpfar](https://twitter.com/flpfar)
+- Linkedin: [Felipe Augusto Rosa](https://www.linkedin.com/in/felipe-augusto-rosa/)
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!
-
-Feel free to check the [issues page](issues/).
+Contributions, issues and feature requests are welcome!. Feel free to check the [issues page](https://github.com/flpfar/ror-social-scaffold/issues).
 
 ## Show your support
 
@@ -77,9 +53,8 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+This project is based on a [Microverse scaffold](https://github.com/microverseinc/ror-social-scaffold).
 
 ## 📝 License
 
-TBA
-
+This project is [MIT](LICENSE) licensed.
