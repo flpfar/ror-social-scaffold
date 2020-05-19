@@ -6,6 +6,20 @@
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
         </span>
+        <% if current_user.id != user.id %>        
+          |
+          <% if current_user.friend_of?(user.id) %>        
+            <span class="profile-link">
+              <%= link_to 'Remove friend', friendship_path(user.id), method: :delete, class: 'profile-link' %>
+            </span>            
+          <% elsif current_user.invitation_sent?(user.id) %> 
+            <span>Invitation pending...</span>
+          <% else %>    
+            <span class="profile-link">
+              <%= link_to 'Send an invitation', new_friendship_path(user.id), class: 'profile-link' %>
+            </span>            
+          <% end %>  
+        <% end %>
       </li>
     <% end %>
   </ul>

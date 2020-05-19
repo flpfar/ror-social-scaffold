@@ -1,0 +1,32 @@
+<h1> Friends </h1>
+<% if @active_friends.empty? %>
+  <span> No friends added </span>
+<% else %>
+  <% @active_friends.each do |friend| %>
+    <span><%= link_to friend.name, user_path(friend) %></span>
+  <% end %>
+<% end %>
+
+<br />
+<h2> Pending invitations sent </h2>
+<% if @pending_friends.empty? %>
+  <span> No pending invitations </span>
+<% else %>
+  <% @pending_friends.each do |pending| %>
+    <span><%= link_to pending.name, user_path(pending) %></span>
+  <% end %>
+<% end %>
+
+<br />
+<h2> Pending friendship requests </h2>
+<% if @friendship_requests.empty? %>
+  <span> No friendship requests </span>
+<% else %>
+  <% @friendship_requests.each do |requesting_user| %>
+    <span>
+    <%= link_to requesting_user.name, user_path(requesting_user) %> |  
+    <%= link_to "(Accept)", friendship_path(requesting_user.id), method: :put %> 
+    <%= link_to "(Reject)", friendship_reject_path(requesting_user.id), method: :delete %>
+    </span>
+  <% end %>
+<% end %>
