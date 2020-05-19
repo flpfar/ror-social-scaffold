@@ -3,6 +3,12 @@
 
 ![screenshot](https://user-images.githubusercontent.com/15898299/82358690-40ab1f00-99dd-11ea-8c3e-58ea829a1217.png)
 
+## Features
+- Sign up and login
+- Friendship requests
+- Timeline with friends' and own posts
+- Comments and reactions on posts
+
 ## Built With
 
 - Ruby on Rails
