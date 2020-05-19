@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'User', type: :feature do
-  before(:all) do
-    User.create(name: 'Sergio Zambrano', email: 'sergiomauz@mail.com', password: '123456')
-  end
-
   it 'is not a valid sign up if the email exists in the database' do
     visit new_user_registration_path
     fill_in 'user_name', with: 'Sergio Zambrano'

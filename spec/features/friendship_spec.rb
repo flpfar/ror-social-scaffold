@@ -2,11 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'Friendship', type: :feature do
   before(:all) do
-    User.create(name: 'Sergio Zambrano', email: 'sergiomauz@mail.com', password: '123456')
-    User.create(name: 'Felipe Rosa', email: 'felipe@mail.com', password: '123456')
-    User.create(name: 'Selena Perez', email: 'selena@mail.com', password: '123456')
-    User.create(name: 'Elvis Presley', email: 'elvis@mail.com', password: '123456')
-    User.create(name: 'Heitor Nunes', email: 'heitor@mail.com', password: '123456')
     User.find(1).friendships.create(friend_id: 3, accepted: true)
     User.find(3).friendships.create(friend_id: 1, accepted: true)
     User.find(4).friendships.create(friend_id: 1, accepted: false)
