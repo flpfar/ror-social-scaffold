@@ -29,15 +29,17 @@ RSpec.describe 'Post', type: :feature do
     find("input[type='submit']").click
   end
 
-  it 'when -mauricio@mail.com- sign in, he can his posts' do
-    expect(page).to have_content(@mauricios_post)
-  end
+  context 'when a User sign in' do
+    it 'he/she can see his/her posts' do
+      expect(page).to have_content(@mauricios_post)
+    end
 
-  it 'when -mauricio@mail.com- sign in, he can see the post of -augusto@mail.com-' do
-    expect(page).to have_content(@augustos_post)
-  end
+    it 'he/she can see posts from his/her friends' do
+      expect(page).to have_content(@augustos_post)
+    end
 
-  it 'when -mauricio@mail.com- sign in, he can not see the post of -magic@mail.com-' do
-    expect(page).to_not have_content(@magic_post)
+    it "he/she cannot see posts from users that aren't his/her friends" do
+      expect(page).to_not have_content(@magic_post)
+    end
   end
 end
