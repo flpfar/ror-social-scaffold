@@ -14,6 +14,8 @@
             </span>            
           <% elsif current_user.invitation_sent?(user.id) %> 
             <span>Invitation pending...</span>
+          <% elsif current_user.invitation_received?(user.id) %> 
+            <%= link_to "(Accept friendship request)", friendship_path(user.id), method: :put, class: 'profile-link' %>
           <% else %>    
             <span class="profile-link">
               <%= link_to 'Send an invitation', new_friendship_path(user.id), class: 'profile-link' %>
